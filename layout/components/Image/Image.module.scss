@@ -1,0 +1,7 @@
+.image__respect_aspect {
+  display: grid;
+}
+
+.image__respect_aspect > * {
+  grid-area: 1 / 1 / 2 / 2;
+}

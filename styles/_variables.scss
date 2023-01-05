@@ -1,0 +1,29 @@
+@use 'sass:list';
+
+/* Typography */
+
+$primary-text: #555;
+$alt-text: #777;
+$link-text: rgba(189, 151, 120, 1);
+$link-text-hover: rgba(189, 151, 120, .6);
+$primary-white: #ffffff;
+$primary-grey: rgb(250, 250, 250);
+$copy-size: 18px;
+$ff-title: 'Oranienbaum', 'serif';
+$ff-headline: 'Raleway', 'sans-serif';
+$ff-body: 'Assistant', 'sans-serif';
+
+/* Layout */
+// $grid-columns: [full-start] minmax(4vmin,auto) [wide-start] minmax(auto,240px) [main-start] min(720px,calc(100% - 8vw)) [main-end] minmax(auto,240px) [wide-end] minmax(4vmin,auto) [full-end];
+$grid-columns: repeat(12, 1fr);
+$span-full-start: 1;
+$span-full-end: 12;
+$span-wide: list.slash(2, 11);
+$span-content: list.slash(3, 10);
+
+/* Breakpoint Definitions */
+
+$tablet-width: 768px;
+$desktop-small: 960px;
+$desktop-medium: 1024px;
+$desktop-large: 1200px;

@@ -1,0 +1,142 @@
+@use '/styles/_partials' as *;
+
+@import url('https://fonts.googleapis.com/css?family=Cardo|Assistant:200,400|Raleway:200,400&display=swap');
+@import url("https://use.typekit.net/fha1rpn.css");
+
+body {
+  color: $primary-text;
+  font-size: $copy-size;
+  font-family: $ff-body;
+  letter-spacing: 0.16px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: subpixel-antialiased;
+  background-color: $primary-white;
+  margin: 0px;
+  padding: 0px;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: $ff-headline;
+  text-transform: uppercase;
+  font-weight: 400;
+  padding: 0px;
+  margin: 0px;
+}
+
+h1 {
+  font-size: 1.7em;
+  font-weight: 200;
+  letter-spacing: 3px;
+}
+
+h2 {
+  font-size: 35px;
+  letter-spacing: -0.35px;
+  line-height: 35px;
+  margin-block-end: 29.05px;
+}
+
+h3 {
+  font-size: $copy-size;
+  color: $alt-text;
+  letter-spacing: 2px;
+  // line-height: 25.6px;
+  margin-top: 15px;
+  // margin-block-end: 29.05px;
+  // margin-block-start: 29.05px;
+  margin-block-end: 1.5em;
+  margin-block-start: 1.5em;
+}
+
+p {
+  line-height: 1.7em;
+  font-weight: 500;
+}
+
+a {
+  color: $link-text;
+  text-decoration: none;
+  padding-bottom: .05em;
+  transition:
+    border-color .15s ease-out,
+    color .15s ease-out;
+}
+a:hover {
+  color: $link-text-hover;
+  border-color: $link-text-hover;
+}
+.link {
+  cursor: pointer;
+}
+
+dt {
+  color: $alt-text;
+  text-transform: uppercase;
+  margin: 24px 0px 8px 0px;
+}
+
+dd {
+  display: flex;
+  flex-flow: column nowrap;
+  margin-inline-start: 16px;
+}
+
+.content {
+  display: grid;
+  justify-content: inherit;
+  margin: 0 auto;
+
+  .content__callout {
+    text-align: center;
+  }
+
+  .content__gallery {
+    width: 100vw;
+  }
+}
+
+.content > * {
+  margin: 16px;
+}
+
+
+.padding__high {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+.padding__medium {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.padding__low {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.width__wide {
+  width: 96vw;
+}
+
+.width__medium {
+  width: 96vw;
+
+  @include bp-desktop-small {
+    width: 80vw;
+  }
+}
+
+.width__narrow {
+  width: 96vw;
+
+  @include bp-desktop-small {
+    width: 60vw;
+  }
+
+  @include bp-desktop-medium {
+    width: 70vw;
+  }
+}
+
+.footer > h4 {
+  font-size: 14px;
+}

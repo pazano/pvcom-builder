@@ -1,0 +1,75 @@
+@use '/styles/_partials' as *;
+
+.navigation {
+  grid-area: navigation;
+
+  @include bp-desktop-small {
+    justify-self: end;
+  }
+}
+
+.navigation__mobilemenu {
+  cursor: pointer;
+  @include bp-desktop-small {
+    display: none;
+  }
+}
+
+.navigation__menu {
+  background-color: $primary-white;
+  position: absolute;
+  font-family: $ff-headline;
+  top: 60px;
+  width: 100vw;
+  height: calc(100vh - 60px);
+  padding-top: 16px;
+  z-index: 10;
+  transition: left 200ms ease-in-out;
+
+  @include bp-desktop-small {
+    position: relative;
+    top: 0px;
+    height: 60px;
+    width: calc(100vw - 496px);
+    padding-top: 0px;
+    padding-right: 16px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+  }
+}
+
+.mobile_off {
+  left: -100vw;
+
+
+  @include bp-desktop-small {
+    left: 0px;
+  }
+}
+.mobile_on {
+  left: 0px;
+}
+
+.navigation__menuitem {
+  height: 60px;
+  text-align: center;
+}
+.navigation__menuitem a {
+  font-size: 24px;
+  font-weight: 200;
+  line-height: 60px;
+  letter-spacing: 2.16px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.68);
+  border-bottom: none;
+
+  @include bp-desktop-small {
+    font-size: 14px;
+    padding: 0px 16px;
+  }
+}
+.navigation__menuitem a:hover {
+  color: rgba(0, 0, 0, 1);
+}

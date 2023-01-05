@@ -1,0 +1,25 @@
+@use './_variables' as *;
+
+@mixin bp-tablet {
+  @media all and (min-width: #{$tablet-width}){
+    @content;
+  }
+}
+
+@mixin bp-desktop-small {
+  @media all and (min-width: #{$desktop-small}){
+    @content;
+  }
+}
+
+@mixin bp-desktop-medium {
+  @media all and (min-width: #{$desktop-medium}){
+    @content;
+  }
+}
+
+@mixin bp-desktop-large {
+  @media all and (min-width: #{$desktop-large}){
+    @content;
+  }
+}

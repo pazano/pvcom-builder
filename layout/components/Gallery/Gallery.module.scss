@@ -1,0 +1,238 @@
+@use '/styles/_partials' as *;
+
+$gallery__grid-unit: 1fr;
+
+.gallery__container {
+  grid-area: gallery;
+  padding: 1rem;
+
+  picture {
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+}
+
+.gallery__row {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+
+  @include bp-desktop-small {
+    grid-template-columns: repeat(16, $gallery__grid-unit);
+  }
+}
+
+.gallery__link {
+  display: none;
+}
+
+/* Adds bottom margin to gallery__row to account for link and label */
+.gallery__with_link_labels {
+
+  .gallery__link {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    grid-area: 2 / 1 / 2 / 1;
+  }
+
+  .gallery__link > a {
+    border: none;
+    background: $primary-white;
+    padding: 4px;
+
+    font-size: 16px;
+    line-height: 28px;
+    color:  $primary-text;
+    font-family: $ff-headline;
+
+    font-weight: 200;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2.16px;
+
+    @include bp-desktop-small {
+      font-size: 18px;
+      line-height: 32px;
+    }
+  }
+
+  .gallery__row {
+    margin-bottom: 24px;
+
+    @include bp-desktop-small {
+      margin-bottom: 36px;
+    }
+  }
+}
+
+/* Addresses images to locations in the grid row */
+.image_0 {
+  grid-area: one;
+}
+.image_1 {
+  grid-area: two;
+}
+.image_2 {
+  grid-area: three;
+}
+.image_3 {
+  grid-area: four;
+}
+
+/* Page galleries are a more narrow container, meant to be content-width for blog use. */
+.gallery__page {
+
+  .portrait_portrait {
+    grid-template-rows: repeat(9, $gallery__grid-unit);
+    grid-template-areas:
+      ". . . . one one one one one one two two two two two two . . . ."
+      ". . . . one one one one one one two two two two two two . . . ."
+      ". . . . one one one one one one two two two two two two . . . ."
+      ". . . . one one one one one one two two two two two two . . . ."
+      ". . . . one one one one one one two two two two two two . . . ."
+      ". . . . one one one one one one two two two two two two . . . .";
+  }
+
+  .landscape {
+    grid-template-rows: repeat(8, $gallery__grid-unit);
+    grid-template-areas:
+      ". . . . one one one one one one one one one one one one . . . ."
+      ". . . . one one one one one one one one one one one one . . . ."
+      ". . . . one one one one one one one one one one one one . . . ."
+      ". . . . one one one one one one one one one one one one . . . ."
+      ". . . . one one one one one one one one one one one one . . . ."
+      ". . . . one one one one one one one one one one one one . . . ."
+      ". . . . one one one one one one one one one one one one . . . ."
+      ". . . . one one one one one one one one one one one one . . . ."
+      ;
+  }
+
+  .landscape_portrait {
+    grid-template-rows: repeat(6, $gallery__grid-unit);
+    grid-template-areas:
+      ". . . . one one one one one one one one two two two two . . . ."
+      ". . . . one one one one one one one one two two two two . . . ."
+      ". . . . one one one one one one one one two two two two . . . ."
+      ". . . . one one one one one one one one two two two two . . . ."
+      ". . . . one one one one one one one one two two two two . . . ."
+      ". . . . one one one one one one one one two two two two . . . ."
+  }
+}
+
+// Hero galleries are more full-width and support links
+
+.gallery__hero {
+
+  .portrait_portrait_portrait {
+    grid-template-areas:
+      "one two three"
+      ;
+
+    @include bp-desktop-small {
+      grid-template-rows: repeat(9, $gallery__grid-unit);
+      .image_0, .image_1, .image_2 {
+        grid-row: 1 / 10;
+      }
+      .image_0 {
+        grid-column: 1 / 7;
+      }
+      .image_1 {
+        grid-column: 7 / 14;
+      }
+      .image_2 {
+        grid-column: 14 / 20;
+      }
+    }
+  }
+
+  .portrait_portrait_portrait_portrait {
+    grid-template-areas:
+      "one two"
+      "three four";
+
+    @include bp-desktop-small {
+      grid-template-rows: repeat(6, $gallery__grid-unit);
+      .image_0, .image_1, .image_2, .image_3 {
+        grid-row: 1 / 7;
+      }
+      .image_0 {
+        grid-column: 1 / 5;
+      }
+      .image_1 {
+        grid-column: 5 / 9;
+      }
+      .image_2 {
+        grid-column: 9 / 13;
+      }
+      .image_3 {
+        grid-column: 13 / 17;
+      }
+    }
+  }
+
+  .landscape_portrait {
+    grid-template-rows: repeat(9, $gallery__grid-unit);
+    grid-template-areas:
+      ". one one one one one one one one one one one one two two two two two two . "
+      ". one one one one one one one one one one one one two two two two two two . "
+      ". one one one one one one one one one one one one two two two two two two . "
+      ". one one one one one one one one one one one one two two two two two two . "
+      ". one one one one one one one one one one one one two two two two two two . "
+      ". one one one one one one one one one one one one two two two two two two . "
+      ". one one one one one one one one one one one one two two two two two two . "
+      ". one one one one one one one one one one one one two two two two two two . "
+      ". one one one one one one one one one one one one two two two two two two . "
+    ;
+  }
+
+  .landscape_portrait_portrait {
+    grid-template-rows: repeat(6, $gallery__grid-unit);
+    grid-template-areas:
+      "one one one one one one one one one one two two two two three three three three"
+      "one one one one one one one one one one two two two two three three three three"
+      "one one one one one one one one one one two two two two three three three three"
+      "one one one one one one one one one one two two two two three three three three"
+      "one one one one one one one one one one two two two two three three three three"
+      "one one one one one one one one one one two two two two three three three three"
+    ;
+
+    @include bp-desktop-small {
+      grid-template-areas:
+      ". one one one one one one one one one one two two two two three three three three ."
+      ". one one one one one one one one one one two two two two three three three three ."
+      ". one one one one one one one one one one two two two two three three three three ."
+      ". one one one one one one one one one one two two two two three three three three ."
+      ". one one one one one one one one one one two two two two three three three three ."
+      ". one one one one one one one one one one two two two two three three three three ."
+      ;
+    }
+  }
+
+
+  .portrait_landscape_portrait {
+
+    grid-template-rows: repeat(6, $gallery__grid-unit);
+    grid-template-areas:
+      "one one one one two two two two two two two two two two three three three three"
+      "one one one one two two two two two two two two two two three three three three"
+      "one one one one two two two two two two two two two two three three three three"
+      "one one one one two two two two two two two two two two three three three three"
+      "one one one one two two two two two two two two two two three three three three"
+      "one one one one two two two two two two two two two two three three three three";
+
+    @include bp-desktop-small{
+      grid-template-areas:
+        ". one one one one two two two two two two two two two two three three three three ."
+        ". one one one one two two two two two two two two two two three three three three ."
+        ". one one one one two two two two two two two two two two three three three three ."
+        ". one one one one two two two two two two two two two two three three three three ."
+        ". one one one one two two two two two two two two two two three three three three ."
+        ". one one one one two two two two two two two two two two three three three three .";
+    }
+
+  }
+}

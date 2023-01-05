@@ -1,0 +1,11 @@
+.footer {
+  height: 40px;
+  position: relative;
+  grid-area: footer;
+  background-color: #fff;
+  text-align: center;
+
+  h4 {
+    line-height: 40px;
+  }
+}

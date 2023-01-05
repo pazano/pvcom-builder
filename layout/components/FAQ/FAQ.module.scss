@@ -1,0 +1,57 @@
+@use '/styles/_partials' as *;
+
+.faq__block {
+  width: 90vw;
+  display: flex;
+  padding-bottom: 30px;
+}
+.faq__block-border {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(28, 28, 28, 0.3);
+  margin-bottom: 30px;
+}
+.faq__image {
+  flex: 2;
+  height: 500px;
+  background-size: cover;
+  background-position: center center;
+}
+.faq__content {
+  flex: 4;
+}
+
+.faq__align-left {
+  flex-flow: column nowrap;
+
+  @include bp-desktop-small {
+    flex-flow: row nowrap;
+  }
+
+  .faq__image {
+    margin: 0px 0px 40px 0px;
+
+    @include bp-desktop-small {
+      margin: 0px 40px 0px 0px;
+    }
+  }
+}
+.faq__align-right {
+  flex-flow: column nowrap;
+
+  @include bp-desktop-small {
+    flex-flow: row-reverse nowrap;
+  }
+
+  .faq__image {
+    margin: 0px 0px 40px 0px;
+
+    @include bp-desktop-small {
+      margin: 0px 0px 0px 40px;
+    }
+  }
+}
+
+.faq__item {
+  margin-bottom: 40px;
+}

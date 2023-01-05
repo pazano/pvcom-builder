@@ -1,0 +1,44 @@
+@use '/styles/_partials' as *;
+
+.header {
+  display: grid;
+  grid-template-columns: 60px auto;
+  grid-template-areas: "navigation logo";
+  align-items: center;
+  justify-items: center;
+  height: 60px;
+  width: 100vw;
+  background-color: $primary-white;
+
+  @include bp-desktop-small {
+    height: 80px;
+    grid-template-columns: 480px auto;
+    grid-template-areas: "logo navigation";
+  }
+}
+
+.logo {
+  grid-area: logo;
+  justify-self: start;
+  padding-left: 16px;
+  cursor: pointer;
+
+  @include bp-desktop-small {
+    padding-left: 32px;
+  }
+}
+.logo h1 {
+  font-family: $ff-headline;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 4.25px;
+
+  span {
+    color: $alt-text;
+  }
+
+  @include bp-tablet {
+    font-size: 17px;
+  }
+}

@@ -1,0 +1,12 @@
+steps:
+  - name: node:12
+    entrypoint: npm
+    args: ["install"]
+  - name: node:12
+    env:
+      - "NEXT_PUBLIC_BUILDER_API_KEY=$_BUILDER_KEY"
+      - "NEXT_PUBLIC_IMAGE_MODEL_ID=$_IMAGE_MODEL_ID"
+    entrypoint: npm
+    args: ["run", "static-out"]
+  - name: gcr.io/cloud-builders/gsutil
+    args: ["-m", "rsync", "-r", "-c", "-d", "./out", "gs://$_DESTINATION"]
