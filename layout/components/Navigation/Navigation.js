@@ -9,7 +9,7 @@ const NavigationItem = ({ label, target }) => {
   return (
     <div className={styles.navigation__menuitem}>
       <Link href={target}>
-        <a>{label}</a>
+        {label}
       </Link>
     </div>
   )
