@@ -58,7 +58,6 @@ const GalleryImageLink = ({ image, imageKey }) => {
 //    Links looks to display a label and link over Gallery entries
 
 const Gallery = (props) => {
-  console.log(props);
   let { galleryImages, type } = props;
   let visibleLinks = props.visibleLinks || false;
 

@@ -21,7 +21,7 @@ $gallery__grid-unit: 1fr;
   margin-bottom: 0.5rem;
 
   @include bp-desktop-small {
-    grid-template-columns: repeat(16, $gallery__grid-unit);
+    grid-template-columns: repeat(4, $gallery__grid-unit);
   }
 }
 
@@ -87,7 +87,7 @@ $gallery__grid-unit: 1fr;
 .gallery__page {
 
   .portrait_portrait {
-    grid-template-rows: repeat(9, $gallery__grid-unit);
+    // grid-template-rows: repeat(9, $gallery__grid-unit);
     grid-template-areas:
       ". . . . one one one one one one two two two two two two . . . ."
       ". . . . one one one one one one two two two two two two . . . ."
@@ -98,7 +98,7 @@ $gallery__grid-unit: 1fr;
   }
 
   .landscape {
-    grid-template-rows: repeat(8, $gallery__grid-unit);
+    // grid-template-rows: repeat(8, $gallery__grid-unit);
     grid-template-areas:
       ". . . . one one one one one one one one one one one one . . . ."
       ". . . . one one one one one one one one one one one one . . . ."
@@ -112,7 +112,7 @@ $gallery__grid-unit: 1fr;
   }
 
   .landscape_portrait {
-    grid-template-rows: repeat(6, $gallery__grid-unit);
+    // grid-template-rows: repeat(6, $gallery__grid-unit);
     grid-template-areas:
       ". . . . one one one one one one one one two two two two . . . ."
       ". . . . one one one one one one one one two two two two . . . ."
@@ -133,7 +133,7 @@ $gallery__grid-unit: 1fr;
       ;
 
     @include bp-desktop-small {
-      grid-template-rows: repeat(9, $gallery__grid-unit);
+      // grid-template-rows: repeat(9, $gallery__grid-unit);
       .image_0, .image_1, .image_2 {
         grid-row: 1 / 10;
       }
@@ -155,7 +155,7 @@ $gallery__grid-unit: 1fr;
       "three four";
 
     @include bp-desktop-small {
-      grid-template-rows: repeat(6, $gallery__grid-unit);
+      // grid-template-rows: repeat(6, $gallery__grid-unit);
       .image_0, .image_1, .image_2, .image_3 {
         grid-row: 1 / 7;
       }
@@ -175,7 +175,7 @@ $gallery__grid-unit: 1fr;
   }
 
   .landscape_portrait {
-    grid-template-rows: repeat(9, $gallery__grid-unit);
+    // grid-template-rows: repeat(9, $gallery__grid-unit);
     grid-template-areas:
       ". one one one one one one one one one one one one two two two two two two . "
       ". one one one one one one one one one one one one two two two two two two . "
@@ -190,7 +190,7 @@ $gallery__grid-unit: 1fr;
   }
 
   .landscape_portrait_portrait {
-    grid-template-rows: repeat(6, $gallery__grid-unit);
+    // grid-template-rows: repeat(6, $gallery__grid-unit);
     grid-template-areas:
       "one one one one one one one one one one two two two two three three three three"
       "one one one one one one one one one one two two two two three three three three"
@@ -215,7 +215,7 @@ $gallery__grid-unit: 1fr;
 
   .portrait_landscape_portrait {
 
-    grid-template-rows: repeat(6, $gallery__grid-unit);
+    // grid-template-rows: repeat(6, $gallery__grid-unit);
     grid-template-areas:
       "one one one one two two two two two two two two two two three three three three"
       "one one one one two two two two two two two two two two three three three three"
