@@ -1,36 +1,45 @@
-import { builder, BuilderComponent, useIsPreviewing, Builder } from '@builder.io/react';
+import { builder, BuilderContent, BuilderComponent, useIsPreviewing } from '@builder.io/react';
 import { getAsyncProps } from '@builder.io/utils';
-import { hydrateImageList } from '../lib/builder_helpers';
+import { hydrateImageList } from '../../lib/builder_helpers';
 
-import Page from '../layout/Page';
-import '../layout/components/BuilderComponents';
+import Page from '../../layout/Page';
+import '../../layout/components/BuilderComponents';
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY);
 
-const BuilderPage = ({ content }) => {
+const BlogPost = ( {content}) => {
   const isPreviewing = useIsPreviewing();
 
   return(
-    <Page seo={{
-      title: content?.data.title || '',
-      description: content?.data.description || '',
-      keywords: content?.data.keywords || '',
-    }}>
-      {( content || isPreviewing ) ? (
-        <BuilderComponent
-          content={content}
-          model="page"
-          options={{ includeRefs: true }}
-         />
-      )
-      : null}
-    </Page>
+    <BuilderContent
+      content={article}
+      options={{ includeRefs: true }}
+      model="blog-post"
+    >
+      {(content) => (
+        <Page seo={{
+          title: content?.data.title || '',
+          description: content?.data.description || '',
+          keywords: content?.data.keywords || '',
+        }}>
+          {( content || isPreviewing ) ? (
+            <BuilderComponent
+              content={content}
+              model="blog-post"
+              options={{ includeRefs: true }}
+            />
+          )
+          : null}
+        </Page>
+      )}
+    </BuilderContent>
   );
 }
 
-export default BuilderPage;
+export default BlogPost;
 
 export const getStaticProps = async ( { params }) => {
+  console.log(params);
 
   let formattedPageUrl = params?.page;
   if (params?.page && Array.isArray(params?.page)) {
@@ -41,7 +50,7 @@ export const getStaticProps = async ( { params }) => {
 
   const content = await builder.get('page', {
     url: formattedPageUrl,
-    includeRefs: true,
+    // includeRefs: true,
   }).promise();
 
   await getAsyncProps(content, {

@@ -1,11 +1,12 @@
 import Page from '../../layout/Page';
 
-import { Builder, builder } from '@builder.io/react';
+import { useIsPreviewing, builder } from '@builder.io/react';
 import { useState, useEffect } from 'react';
 import { hydrateImage, builderRequestCustom } from '../../lib/builder_helpers';
 import ImageDetail from '../../layout/components/ImageDetail/ImageDetail';
 
 const ImageDetailPage = ( { content } ) => {
+  const isPreviewing = useIsPreviewing()
   const imageData = content?.image.value.data
   const [image, setImage] = useState(imageData); // meh this
 
@@ -14,7 +15,7 @@ const ImageDetailPage = ( { content } ) => {
       const hydratedImage = await hydrateImage(imageData);
       hydratedImage && setImage(hydratedImage);
     }
-    Builder.isPreviewing && setImageDataForPreview();
+    isPreviewing && setImageDataForPreview();
   }, [image])
 
   return (
