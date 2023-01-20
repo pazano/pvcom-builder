@@ -4,18 +4,19 @@ import ErrorPage from 'next/error';
 
 import Page from '../../layout/Page';
 import '../../layout/components/BuilderComponents';
+import { faDoorClosed } from '@fortawesome/free-solid-svg-icons';
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY);
 
 const BlogPost = ( { content } ) => {
-  const router = useRouter();
   const isPreviewing = useIsPreviewing();
-  if (!router.isFallback && !content && !isPreviewing) {
-    return <ErrorPage statusCode={404} />;
-  }
 
   return(
-    <>
+    <Page seo={{
+      title: content.data?.title || '',
+      description: content.data?.description || '',
+      keywords: content.data?.keywords || '',
+    }}>
       {(content || isPreviewing ) ? (
         <BuilderContent
           model="blog-post"
@@ -23,21 +24,16 @@ const BlogPost = ( { content } ) => {
           content={content}
         >
           {(content) => (
-            <Page seo={{
-              title: content?.data.title || '',
-              description: content?.data.description || '',
-              keywords: content?.data.keywords || '',
-            }}>
               <BuilderComponent
                 model="blog-post"
                 options={{ includeRefs: true }}
                 content={content}
               />
-            </Page>
-          )}
+              )}
         </BuilderContent>
       ) : null }
-    </>
+    </Page>
+
   );
 }
 
@@ -53,6 +49,9 @@ export const getStaticProps = async ( { params }) => {
       'data.slug': slug,
     }
   }).toPromise()) || null;
+
+  // !content && console.log(`[Article] Couldn't find content for slug: ${params.slug}`)
+  // content && console.log(content)
 
   return {
     props: { content },
