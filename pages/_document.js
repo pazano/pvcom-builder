@@ -6,6 +6,12 @@ import { GA_TRACKING_ID } from '../lib/tracking';
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY);
 
+`<!-- Google tag (gtag.js) -->
+<script async src=""></script>
+<script>
+
+</script>`
+
 export default class extends Document {
   render() {
     return (
