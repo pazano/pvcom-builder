@@ -1,25 +1,24 @@
-import { builder, BuilderComponent, Builder } from '@builder.io/react';
-import { getAsyncProps } from '@builder.io/utils';
-import { hydrateImageList } from '../lib/builder_helpers';
+import { builder, BuilderComponent, useIsPreviewing } from '@builder.io/react';
 
 import Page from '../layout/Page';
 import '../layout/components/BuilderComponents';
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY);
 
-const BuilderPage = (props) => {
+const BuilderPage = ({ content }) => {
+  const isPreviewing = useIsPreviewing();
 
   return(
     <Page seo={{
-      title: props.content?.data.title || '',
-      description: props.content?.data.description || '',
-      keywords: props.content?.data.keywords || '',
+      title: content?.data.title || '',
+      description: content?.data.description || '',
+      keywords: content?.data.keywords || '',
     }}>
-      {( props.content || Builder.isPreviewing ) ? (
+      {( content || isPreviewing ) ? (
         <BuilderComponent
-          content={props.content}
+          content={content}
           model="page"
-          // options={{ includeRefs: true }}
+          options={{ includeRefs: true }}
          />
       )
       : null}
@@ -40,17 +39,8 @@ export const getStaticProps = async ( { params }) => {
 
   const content = await builder.get('page', {
     url: formattedPageUrl,
-    // includeRefs: true,
+    includeRefs: true,
   }).promise();
-
-  await getAsyncProps(content, {
-    async Gallery(props) {
-      const hydratedImages = await hydrateImageList(props.galleryImages);
-      return {
-        galleryImages: hydratedImages,
-      }
-    }
-  })
 
   return {
     props: { content },
