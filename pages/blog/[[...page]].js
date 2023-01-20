@@ -1,83 +1,73 @@
 import { builder, BuilderContent, BuilderComponent, useIsPreviewing } from '@builder.io/react';
-import { getAsyncProps } from '@builder.io/utils';
-import { hydrateImageList } from '../../lib/builder_helpers';
+import { useRouter } from 'next/router';
+import ErrorPage from 'next/error';
 
 import Page from '../../layout/Page';
 import '../../layout/components/BuilderComponents';
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY);
 
-const BlogPost = ( {content}) => {
+const BlogPost = ( { content } ) => {
+  const router = useRouter();
   const isPreviewing = useIsPreviewing();
+  if (!router.isFallback && !content && !isPreviewing) {
+    return <ErrorPage statusCode={404} />;
+  }
 
   return(
-    <BuilderContent
-      content={article}
-      options={{ includeRefs: true }}
-      model="blog-post"
-    >
-      {(content) => (
-        <Page seo={{
-          title: content?.data.title || '',
-          description: content?.data.description || '',
-          keywords: content?.data.keywords || '',
-        }}>
-          {( content || isPreviewing ) ? (
-            <BuilderComponent
-              content={content}
-              model="blog-post"
-              options={{ includeRefs: true }}
-            />
-          )
-          : null}
-        </Page>
-      )}
-    </BuilderContent>
+    <>
+      {(content || isPreviewing ) ? (
+        <BuilderContent
+          model="blog-post"
+          options={{ includeRefs: true }}
+          content={content}
+        >
+          {(content) => (
+            <Page seo={{
+              title: content?.data.title || '',
+              description: content?.data.description || '',
+              keywords: content?.data.keywords || '',
+            }}>
+              <BuilderComponent
+                model="blog-post"
+                options={{ includeRefs: true }}
+                content={content}
+              />
+            </Page>
+          )}
+        </BuilderContent>
+      ) : null }
+    </>
   );
 }
 
 export default BlogPost;
 
 export const getStaticProps = async ( { params }) => {
-  console.log(params);
 
-  let formattedPageUrl = params?.page;
-  if (params?.page && Array.isArray(params?.page)) {
-    formattedPageUrl = params?.page.length > 1 ? params?.page.join('/') : params?.page[0];
-  }
+  let slug = params.slug;
 
-  formattedPageUrl = formattedPageUrl ? '/' + formattedPageUrl : '/';
-
-  const content = await builder.get('page', {
-    url: formattedPageUrl,
-    // includeRefs: true,
-  }).promise();
-
-  await getAsyncProps(content, {
-    async Gallery(props) {
-      const hydratedImages = await hydrateImageList(props.galleryImages);
-      return {
-        galleryImages: hydratedImages,
-      }
+  let content = (await builder.get('article', {
+    includeRefs: true,
+    query: {
+      'data.slug': slug,
     }
-  })
+  }).toPromise()) || null;
 
   return {
     props: { content },
-    revalidate: true,
-    notFound: !content
   }
 }
 
 export const getStaticPaths = async () => {
-  const results = await builder.getAll('page', {
+  const results = await builder.getAll('article', {
     options: {
       noTargeting: true,
     },
   });
 
   return {
-    paths: results.map((item) => ({ params: { page: [item.data?.url.substr(1)] }})),
-    fallback: false,
+    paths: results?.map(article => `/blog/${article.data.slug}`) || [],
+    fallback: true,
   };
 };
