@@ -1,11 +1,11 @@
 steps:
-  - name: node:18
-    entrypoint: npm
+  - name: 'gcr.io/cloud-builders/npm@sha256:a810b5b10886006a50b9a1177082b9b40370f07df0740b8c838f36b0a4f65ff9'
+    entrypoint: yarn
     args: ["install"]
-  - name: node:12
+  - name: 'gcr.io/cloud-builders/npm@sha256:a810b5b10886006a50b9a1177082b9b40370f07df0740b8c838f36b0a4f65ff9'
     env:
       - "NEXT_PUBLIC_BUILDER_API_KEY=$_BUILDER_KEY"
-    entrypoint: npm
+    entrypoint: yarn
     args: ["run", "static-out"]
   - name: gcr.io/cloud-builders/gsutil
     args: ["-m", "rsync", "-r", "-c", "-d", "./out", "gs://$_DESTINATION"]
