@@ -1,12 +1,23 @@
+import { useRouter } from 'next/router';
 import { builder, BuilderComponent, useIsPreviewing } from '@builder.io/react';
 
+import ErrorPage from '../layout/ErrorPage';
 import Page from '../layout/Page';
 import '../layout/components/BuilderComponents';
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY);
 
 const BuilderPage = ({ content }) => {
+  const router = useRouter();
   const isPreviewing = useIsPreviewing();
+
+  // if (router.isFallback) {
+  //   return <h1>Loading...</h1>
+  // }
+
+  if (!content && !isPreviewing) {
+    return <ErrorPage targetModel='page' />;
+  }
 
   return(
     <Page seo={{
@@ -14,14 +25,11 @@ const BuilderPage = ({ content }) => {
       description: content?.data.description || '',
       keywords: content?.data.keywords || '',
     }}>
-      {( content || isPreviewing ) ? (
-        <BuilderComponent
-          content={content}
-          model="page"
-          options={{ includeRefs: true }}
-         />
-      )
-      : null}
+      <BuilderComponent
+        model="page"
+        content={content}
+        options={{ includeRefs: true }}
+        />
     </Page>
   );
 }
