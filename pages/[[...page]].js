@@ -8,28 +8,20 @@ import '../layout/components/BuilderComponents';
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY);
 
 const BuilderPage = ({ content }) => {
-  const router = useRouter();
   const isPreviewing = useIsPreviewing();
-
-  // if (router.isFallback) {
-  //   return <h1>Loading...</h1>
-  // }
-
-  if (!content && !isPreviewing) {
-    return <ErrorPage targetModel='page' />;
-  }
-
   return(
     <Page seo={{
       title: content?.data.title || '',
       description: content?.data.description || '',
       keywords: content?.data.keywords || '',
     }}>
-      <BuilderComponent
-        model="page"
-        content={content}
-        options={{ includeRefs: true }}
-        />
+      {( content || isPreviewing ) ? (
+        <BuilderComponent
+          model="page"
+          content={content}
+          options={{ includeRefs: true }}
+          />
+        ) : ( <h1>Nada</h1>)}
     </Page>
   );
 }
@@ -45,10 +37,12 @@ export const getStaticProps = async ( { params }) => {
 
   formattedPageUrl = formattedPageUrl ? '/' + formattedPageUrl : '/';
 
-  const content = await builder.get('page', {
+  const content = (await builder.get('page', {
     url: formattedPageUrl,
     includeRefs: true,
-  }).promise();
+  }).toPromise()) || null ;
+
+  !content && console.log(`[Pages] Could not retrieve content for url: ${formattedPageUrl}`);
 
   return {
     props: { content },
