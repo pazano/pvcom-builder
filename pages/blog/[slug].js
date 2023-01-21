@@ -1,15 +1,11 @@
-import { builder, BuilderContent, BuilderComponent, useIsPreviewing } from '@builder.io/react';
-import { useRouter } from 'next/router';
-import ErrorPage from 'next/error';
+import { builder, BuilderContent, BuilderComponent, Builder } from '@builder.io/react';
 
 import Page from '../../layout/Page';
 import '../../layout/components/BuilderComponents';
-import { faDoorClosed } from '@fortawesome/free-solid-svg-icons';
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY);
 
 const BlogPost = ( { content } ) => {
-  const isPreviewing = useIsPreviewing();
 
   return(
     <Page seo={{
@@ -17,15 +13,15 @@ const BlogPost = ( { content } ) => {
       description: content.data?.description || '',
       keywords: content.data?.keywords || '',
     }}>
-      {(content || isPreviewing ) ? (
+      {(content || Builder.isPreviewing ) ? (
         <BuilderContent
-          model="blog-post"
+          model="article"
           options={{ includeRefs: true }}
           content={content}
         >
           {(content) => (
               <BuilderComponent
-                model="blog-post"
+                model="article"
                 options={{ includeRefs: true }}
                 content={content}
               />
@@ -40,7 +36,6 @@ const BlogPost = ( { content } ) => {
 export default BlogPost;
 
 export const getStaticProps = async ( { params }) => {
-
   let slug = params.slug;
 
   let content = (await builder.get('article', {
@@ -49,9 +44,6 @@ export const getStaticProps = async ( { params }) => {
       'data.slug': slug,
     }
   }).toPromise()) || null;
-
-  // !content && console.log(`[Article] Couldn't find content for slug: ${params.slug}`)
-  // content && console.log(content)
 
   return {
     props: { content },
@@ -63,6 +55,7 @@ export const getStaticPaths = async () => {
     options: {
       noTargeting: true,
     },
+    omit: 'data.blocks',
   });
 
   return {
