@@ -1,8 +1,10 @@
 import { builder, BuilderContent, BuilderComponent, Builder } from '@builder.io/react';
 
 import Page from '../../layout/Page';
+import TitleCard from '../../layout/components/TitleCard/TitleCard';
 import '../../layout/components/BuilderComponents';
 import React from 'react';
+
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY);
 
@@ -14,14 +16,18 @@ const BlogPost = ( { content } ) => {
       keywords: content.data?.keywords || '',
     }}>
       {(content || Builder.isPreviewing || Builder.isEditing) ? (
-        <>
-          <h1>{content.data?.title || 'Article headline'}</h1>
+        <React.Fragment>
+          <TitleCard
+            title={content.data?.title || ''}
+            lede={content.data?.lede || ''}
+            image={content.data?.image}
+          />
           <BuilderComponent
             model="article"
             options={{ includeRefs: true }}
             content={content}
           />
-        </>
+        </React.Fragment>
       ) : <h1>TODO</h1>}
     </Page>
   );

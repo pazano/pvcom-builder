@@ -17,7 +17,7 @@ export default class extends Document {
     return (
       <Html>
         <Head>
-          {/* <script
+          <script
             async
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
           />
@@ -30,7 +30,7 @@ export default class extends Document {
                 gtag('config', '${GA_TRACKING_ID}');
               `
             }}
-          /> */}
+          />
         </Head>
         <body>
           <Main />

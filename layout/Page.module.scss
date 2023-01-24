@@ -12,10 +12,10 @@
 
   display: grid;
   grid-template-columns: $grid-columns;
-  grid-template-areas:
-    "header"
-    "."
-    "footer";
+  // grid-template-areas:
+  //   "header"
+  //   "."
+  //   "footer";
 }
 
 .page > * {
@@ -23,13 +23,13 @@
   grid-column-end: $span-full-end;
 }
 
-.builder-component {
-  grid-template-columns: $grid-columns;
-}
-.builder-component > * {
-  grid-column-start: $span-full-start;
-  grid-column-end: $span-full-end;
-}
+// .builder-component {
+//   grid-template-columns: $grid-columns;
+// }
+// .builder-component > * {
+//   grid-column-start: $span-full-start;
+//   grid-column-end: $span-full-end;
+// }
 
 .header {
   grid-area: header;
