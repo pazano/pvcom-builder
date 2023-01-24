@@ -2,40 +2,34 @@ import { builder, BuilderContent, BuilderComponent, Builder } from '@builder.io/
 
 import Page from '../../layout/Page';
 import '../../layout/components/BuilderComponents';
+import React from 'react';
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY);
 
 const BlogPost = ( { content } ) => {
-
   return(
     <Page seo={{
       title: content.data?.title || '',
       description: content.data?.description || '',
       keywords: content.data?.keywords || '',
     }}>
-      {(content || Builder.isPreviewing ) ? (
-        <BuilderContent
-          model="article"
-          options={{ includeRefs: true }}
-          content={content}
-        >
-          {(content) => (
-              <BuilderComponent
-                model="article"
-                options={{ includeRefs: true }}
-                content={content}
-              />
-              )}
-        </BuilderContent>
-      ) : null }
+      {(content || Builder.isPreviewing || Builder.isEditing) ? (
+        <>
+          <h1>{content.data?.title || 'Article headline'}</h1>
+          <BuilderComponent
+            model="article"
+            options={{ includeRefs: true }}
+            content={content}
+          />
+        </>
+      ) : <h1>TODO</h1>}
     </Page>
-
   );
 }
 
 export default BlogPost;
 
-export const getStaticProps = async ( { params }) => {
+export const getStaticProps = async (  { params } ) => {
   let slug = params.slug;
 
   let content = (await builder.get('article', {
