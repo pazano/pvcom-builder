@@ -1,6 +1,6 @@
 import { builder, BuilderContent, BuilderComponent, Builder } from '@builder.io/react';
 
-import Page from '../../layout/Page';
+import Layout from '../../layout/Layout';
 import TitleCard from '../../layout/components/TitleCard/TitleCard';
 import '../../layout/components/BuilderComponents';
 import React from 'react';
@@ -9,12 +9,15 @@ import React from 'react';
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY);
 
 const BlogPost = ( { content } ) => {
+
+  const seo = {
+    title: content.data?.title || '',
+    description: content.data?.description || '',
+    keywords: content.data?.keywords || '',
+  }
+
   return(
-    <Page seo={{
-      title: content.data?.title || '',
-      description: content.data?.description || '',
-      keywords: content.data?.keywords || '',
-    }}>
+    <Layout seo={seo}>
       {(content || Builder.isPreviewing || Builder.isEditing) ? (
         <React.Fragment>
           <TitleCard
@@ -29,7 +32,7 @@ const BlogPost = ( { content } ) => {
           />
         </React.Fragment>
       ) : <h1>TODO</h1>}
-    </Page>
+    </Layout>
   );
 }
 

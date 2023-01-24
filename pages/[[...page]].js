@@ -1,18 +1,19 @@
 
 import { builder, BuilderComponent, Builder } from '@builder.io/react';
 
-import Page from '../layout/Page';
+import Layout from '../layout/Layout';
 import '../layout/components/BuilderComponents';
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY);
 
 const BuilderPage = ({ content }) => {
+  const seo = {
+    title: content?.data.title || '',
+    description: content?.data.description || '',
+    keywords: content?.data.keywords || '',
+  }
   return(
-    <Page seo={{
-      title: content?.data.title || '',
-      description: content?.data.description || '',
-      keywords: content?.data.keywords || '',
-    }}>
+    <Layout seo={seo}>
       {( content || Builder.isPreviewing ) ? (
         <BuilderComponent
           model="page"
@@ -20,7 +21,7 @@ const BuilderPage = ({ content }) => {
           options={{ includeRefs: true }}
           />
         ) : null }
-    </Page>
+    </Layout>
   );
 }
 
