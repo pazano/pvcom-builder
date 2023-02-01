@@ -1,5 +1,16 @@
 @use '/styles/_partials' as *;
 
 .bodycopy {
-  grid-column: $span-content;
+  grid-column: $span-full;
+  margin-left: 16px;
+  margin-right: 16px;
+
+  @include bp-desktop-small {
+    grid-column: $span-wide;
+  }
+
+  @include bp-desktop-medium {
+    grid-column: $span-content;
+  }
+
 }

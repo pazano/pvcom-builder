@@ -1,5 +1,11 @@
 @use './_variables' as *;
 
+@mixin bp-mobile {
+  @media all and (max-width: #{$tablet-width}){
+    @content;
+  }
+}
+
 @mixin bp-tablet {
   @media all and (min-width: #{$tablet-width}){
     @content;

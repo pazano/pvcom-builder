@@ -40,10 +40,7 @@ h3 {
   font-size: $copy-size;
   color: $alt-text;
   letter-spacing: 2px;
-  // line-height: 25.6px;
   margin-top: 15px;
-  // margin-block-end: 29.05px;
-  // margin-block-start: 29.05px;
   margin-block-end: 1.5em;
   margin-block-start: 1.5em;
 }
@@ -120,4 +117,26 @@ dd {
 
 .footer > h4 {
   font-size: 14px;
+}
+
+.builder-component, .builder-blocks, .builder-content {
+  display: grid !important;
+  grid-template-columns: $grid-columns;
+}
+
+.builder-component > * {
+  display: grid;
+  grid-column: $span-full;
+}
+
+
+.builder-content > * {
+  display: grid;
+  grid-column: $span-full;
+}
+
+
+.builder-blocks > * {
+  display: grid;
+  grid-column: $span-full;
 }

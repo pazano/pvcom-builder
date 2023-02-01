@@ -14,8 +14,6 @@
 }
 
 .page > * {
-  // grid-column-start: $span-full-start;
-  // grid-column-end: $span-full-end;
   grid-column: $span-full;
   display: grid;
 }
