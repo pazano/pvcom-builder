@@ -2,7 +2,7 @@
 import { builder, BuilderComponent, Builder } from '@builder.io/react';
 
 import Layout from '../layout/Layout';
-import '../layout/components/BuilderComponents';
+import '../layout/components/BuilderPageComponents';
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY);
 

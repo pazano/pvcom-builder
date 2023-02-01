@@ -1,10 +1,9 @@
-import { builder, BuilderContent, BuilderComponent, Builder } from '@builder.io/react';
+import { builder, BuilderComponent, Builder } from '@builder.io/react';
+import React from 'react';
 
 import Layout from '../../layout/Layout';
 import TitleCard from '../../layout/components/TitleCard/TitleCard';
-import '../../layout/components/BuilderComponents';
-import React from 'react';
-
+import '../../layout/components/BuilderArticleComponents';
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY);
 
@@ -20,18 +19,13 @@ const BlogPost = ( { content } ) => {
     <Layout seo={seo}>
       {(content || Builder.isPreviewing || Builder.isEditing) ? (
         <React.Fragment>
-          <TitleCard
-            title={content.data?.title || ''}
-            lede={content.data?.lede || ''}
-            image={content.data?.image}
-          />
           <BuilderComponent
             model="article"
             options={{ includeRefs: true }}
             content={content}
           />
         </React.Fragment>
-      ) : <h1>TODO</h1>}
+      ) : null}
     </Layout>
   );
 }

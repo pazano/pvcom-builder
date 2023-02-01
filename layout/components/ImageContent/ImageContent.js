@@ -1,3 +1,4 @@
+import React from 'react';
 import Image from '../Image/Image';
 import styles from './ImageContent.module.scss';
 
@@ -5,7 +6,7 @@ const ImageContent = ({image, altText, title, copy, orientation, imageSide, colu
   const titleMarkup = title ? <h2>{title}</h2> : '';
   const copyMarkup = copy ? <div dangerouslySetInnerHTML={{ __html: copy }} /> : '';
   return (
-    <div className={`content width__${columnWidth}`}>
+    <React.Fragment>
       <div className={`${styles.module__image_content} ${styles['module__image_content__' + orientation + '_' + imageSide]}`}>
         <Image
           src={image}
@@ -21,7 +22,7 @@ const ImageContent = ({image, altText, title, copy, orientation, imageSide, colu
           </div>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   )
 }
 

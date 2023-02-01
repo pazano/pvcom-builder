@@ -81,25 +81,6 @@ dd {
   margin-inline-start: 16px;
 }
 
-.content {
-  display: grid;
-  justify-content: inherit;
-  margin: 0 auto;
-
-  .content__callout {
-    text-align: center;
-  }
-
-  .content__gallery {
-    width: 100vw;
-  }
-}
-
-.content > * {
-  margin: 16px;
-}
-
-
 .padding__high {
   padding-top: 100px;
   padding-bottom: 100px;

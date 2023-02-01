@@ -1,3 +1,4 @@
+import React from 'react';
 import Image from '../Image/Image';
 import styles from './ImageDetail.module.scss';
 
@@ -19,7 +20,7 @@ const ImageDetail = ({portfolioImage, imageSide, contentBackground=false}) => {
   })
 
   return (
-    <div className="content width__narrow">
+    <React.Fragment>
       <div className={`${styles.module__image_content} ${styles['module__image_content__' + orientation + '_' + imageSide]}`}>
         <Image
           src={image}
@@ -41,7 +42,7 @@ const ImageDetail = ({portfolioImage, imageSide, contentBackground=false}) => {
           </div>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   )
 }
 

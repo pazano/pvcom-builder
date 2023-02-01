@@ -6,43 +6,17 @@
 }
 
 .page {
-  grid-area: page;
   overflow-x: hidden;
   overflow-y: auto;
 
   display: grid;
   grid-template-columns: $grid-columns;
-  // grid-template-areas:
-  //   "header"
-  //   "."
-  //   "footer";
 }
 
 .page > * {
-  grid-column-start: $span-full-start;
-  grid-column-end: $span-full-end;
+  // grid-column-start: $span-full-start;
+  // grid-column-end: $span-full-end;
+  grid-column: $span-full;
+  display: grid;
 }
 
-// .builder-component {
-//   grid-template-columns: $grid-columns;
-// }
-// .builder-component > * {
-//   grid-column-start: $span-full-start;
-//   grid-column-end: $span-full-end;
-// }
-
-.header {
-  grid-area: header;
-}
-
-.footer {
-  height: 40px;
-  position: relative;
-  grid-area: footer;
-  background-color: #fff;
-  text-align: center;
-
-  h4 {
-    line-height: 40px;
-  }
-}
