@@ -2,44 +2,64 @@
 
 .titlecard {
   grid-column: $span-wide;
+  height: 300px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   text-align: center;
+  align-items: center;
 
   @include bp-desktop-small {
     grid-column: $span-full;
   }
 
+}
+
+.titlecard__titleblock {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  margin-left: -56px;
+  margin-right: 56px;
+  padding: 24px 24px;
+  background-color: $primary-white;
+  border-bottom: solid 2px $primary-grey;
+  border-right: solid 2px $primary-grey;
+
   h1 {
-    color: rgba(28, 28, 28, 0.6);
+    color: $primary-text;
     font-weight: 300;
-    text-align: center;
+    text-align: left;
     font-size: 32px;
-    letter-spacing: 4px;
-    margin-bottom: 8px;
+    margin-bottom: 0px;
 
     @include bp-desktop-small {
       font-size: 48px;
     }
   }
+  p {
+    color: $alt-text;
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-left: 16px;
+    text-align: left;
+  }
 }
 
 .titlecard__image {
-  width: 100%;
-  height: 300px;
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
 
-  @include bp-tablet {
-    height: 400px;
+  img {
+    height: 300px;
   }
 
-  @include bp-desktop-small {
-    height: 600px;
-  }
+  // @include bp-tablet {
+  //   height: 400px;
+  // }
 
-  @include bp-desktop-medium {
-    height: 800px;
-  }
+  // @include bp-desktop-small {
+  //   height: 600px;
+  // }
+
+  // @include bp-desktop-medium {
+  //   height: 800px;
+  // }
 }

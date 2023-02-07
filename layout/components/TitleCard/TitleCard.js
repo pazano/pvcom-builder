@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from '../Image/Image';
 import styles from './TitleCard.module.scss';
 
 const TitleCard = ({ title, image, lede }) => {
@@ -9,13 +10,18 @@ const TitleCard = ({ title, image, lede }) => {
   return(
     <React.Fragment>
       <div className={styles.titlecard}>
-        <h1>{ title || ''}</h1>
         { (image) ? (
-          <div className={styles.titlecard__image} style={imageStyle}></div>
+          <Image
+            src={image}
+            aspectRatio="4x3"
+            respectAspect={false}
+            style={styles.titlecard__image}
+          />
         ): null}
-        { (lede) ? (
-          <p>{lede || ''}</p>
-        ): null}
+        <div className={styles.titlecard__titleblock}>
+          <h1>{ title || ''}</h1>
+          { (lede) ? (<p>{lede || ''}</p>): null}
+        </div>
       </div>
     </React.Fragment>
   )

@@ -1,13 +1,14 @@
 @use '/styles/_partials' as *;
 
-@import url('https://fonts.googleapis.com/css?family=Cardo|Assistant:200,400|Raleway:200,400&display=swap');
-@import url("https://use.typekit.net/fha1rpn.css");
+// @import url('https://fonts.googleapis.com/css?family=Cardo|Assistant:200,400|Raleway:200,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Gudea:ital,wght@0,400;0,700;1,400&display=swap');
+// @import url("https://use.typekit.net/fha1rpn.css");
 
 body {
   color: $primary-text;
   font-size: $copy-size;
   font-family: $ff-body;
-  letter-spacing: 0.16px;
+  // letter-spacing: 0.16px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: subpixel-antialiased;
   background-color: $primary-white;
@@ -17,43 +18,37 @@ body {
 
 h1, h2, h3, h4, h5 {
   font-family: $ff-headline;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   font-weight: 400;
   padding: 0px;
   margin: 0px;
 }
 
 h1 {
-  font-size: 1.7em;
+  font-size: 1.7rem;
   font-weight: 200;
   letter-spacing: 3px;
 }
 
 h2 {
   font-size: 35px;
-  letter-spacing: -0.35px;
   line-height: 35px;
-  margin-block-end: 29.05px;
 }
 
 h3 {
   font-size: $copy-size;
   color: $alt-text;
-  letter-spacing: 2px;
   margin-top: 15px;
-  margin-block-end: 1.5em;
-  margin-block-start: 1.5em;
 }
 
 p {
-  line-height: 1.7em;
+  line-height: 1.7rem;
   font-weight: 500;
 }
 
 a {
   color: $link-text;
   text-decoration: none;
-  padding-bottom: .05em;
   transition:
     border-color .15s ease-out,
     color .15s ease-out;
