@@ -1,7 +1,8 @@
 @use '/styles/_partials' as *;
 
 // @import url('https://fonts.googleapis.com/css?family=Cardo|Assistant:200,400|Raleway:200,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Gudea:ital,wght@0,400;0,700;1,400&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Gudea:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Sintony:wght@400;700&display=swap');
 // @import url("https://use.typekit.net/fha1rpn.css");
 
 body {
@@ -27,7 +28,6 @@ h1, h2, h3, h4, h5 {
 h1 {
   font-size: 1.7rem;
   font-weight: 200;
-  letter-spacing: 3px;
 }
 
 h2 {

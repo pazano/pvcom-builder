@@ -3,6 +3,7 @@
 .titlecard {
   grid-column: $span-wide;
   height: 300px;
+  margin-bottom: 24px;
   display: flex;
   flex-direction: row;
   text-align: center;
@@ -30,17 +31,20 @@
     font-weight: 300;
     text-align: left;
     font-size: 32px;
-    margin-bottom: 0px;
+
+    margin-block-start: 0rem;
+    margin-block-end: 0rem;
 
     @include bp-desktop-small {
       font-size: 48px;
     }
   }
   p {
+    font-family: $ff-headline;
     color: $alt-text;
     font-size: 1.2rem;
     font-style: italic;
-    margin-left: 16px;
+    margin-left: 24px;
     text-align: left;
   }
 }
@@ -51,15 +55,4 @@
     height: 300px;
   }
 
-  // @include bp-tablet {
-  //   height: 400px;
-  // }
-
-  // @include bp-desktop-small {
-  //   height: 600px;
-  // }
-
-  // @include bp-desktop-medium {
-  //   height: 800px;
-  // }
 }

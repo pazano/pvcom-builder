@@ -5,6 +5,10 @@
   margin-left: 16px;
   margin-right: 16px;
 
+  p {
+    line-height: 2rem;
+  }
+
   @include bp-desktop-small {
     grid-column: $span-wide;
   }
