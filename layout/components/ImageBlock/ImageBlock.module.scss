@@ -1,0 +1,36 @@
+@use '/styles/_partials' as *;
+
+.imageblock_container {
+  display: grid;
+  grid-template-columns: $grid-columns;
+  position: relative;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.content {
+  grid-column: $span-content;
+  height: 300px;
+}
+
+.wide {
+  grid-column: $span-wide;
+  height: 400px;
+}
+
+.full {
+  grid-column: $span-full;
+  height: 500px;
+}
+
+.imageblock_image {
+  position: absolute;
+  inset: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
