@@ -17,7 +17,9 @@ const TitleCard = ({ title, image, lede }) => {
             respectAspect={false}
             style={styles.titlecard__image}
           />
-        ): null}
+        ): (
+          <div className={styles.titlecard__image_placeholder} />
+        )}
         <div className={styles.titlecard__titleblock}>
           <h1>{ title || ''}</h1>
           { (lede) ? (<p>{lede || ''}</p>): null}

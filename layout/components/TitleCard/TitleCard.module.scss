@@ -53,6 +53,18 @@
 
   img {
     height: 300px;
+    width: 400px;
+    object-fit: cover;
+    object-position: 50% 50%;
   }
+
+}
+
+.titlecard__image_placeholder {
+
+  height: 300px;
+  width: 400px;
+  background-color: $primary-grey;
+  border: outset solid 1px $primary-grey;
 
 }

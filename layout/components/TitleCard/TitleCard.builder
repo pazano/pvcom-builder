@@ -1,4 +1,5 @@
 import { Builder } from '@builder.io/react';
+import { backgroundImage } from '../BuilderAdminParts';
 import TitleCard from './TitleCard';
 
 Builder.registerComponent(TitleCard,
@@ -20,5 +21,6 @@ Builder.registerComponent(TitleCard,
         helperText: 'File types: .jpeg .png',
         allowedFileTypes: ['jpeg', 'png'],
       },
+      backgroundImage,
     ]
   })
