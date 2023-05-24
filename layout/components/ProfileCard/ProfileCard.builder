@@ -1,18 +1,21 @@
 import { Builder } from '@builder.io/react';
-import TitleCard from './TitleCard';
+import ProfileCard from './ProfileCard';
 
-Builder.registerComponent(TitleCard,
+Builder.registerComponent(ProfileCard,
   {
-    name: 'Title Card',
+    name: 'ProfileCard Card',
     image: 'https://unpkg.com/css.gg@2.0.0/icons/svg/view-split.svg',
     inputs: [
       {
-        name: 'title',
-        type: 'string'
+        name: 'name',
+        type: 'string',
+      },
+      { name: 'profession',
+        type: 'string',
       },
       {
-        name: 'lede',
-        type: 'string'
+        name: 'description',
+        type: 'longText',
       },
       {
         name: 'image',

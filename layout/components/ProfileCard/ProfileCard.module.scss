@@ -1,11 +1,10 @@
 @use '/styles/_partials' as *;
 
-.titlecard {
+.profilecard {
   grid-column: $span-wide;
-  height: 300px;
   margin-bottom: 24px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   text-align: center;
   align-items: center;
 
@@ -15,21 +14,15 @@
 
 }
 
-.titlecard__titleblock {
+.profilecard__details {
   display: flex;
   flex-flow: column nowrap;
+  align-items: center;
   width: 100%;
-  margin-left: -56px;
-  margin-right: 56px;
-  padding: 24px 24px;
-  background-color: $primary-white;
-  border-bottom: solid 2px $primary-grey;
-  border-right: solid 2px $primary-grey;
 
   h1 {
     color: $primary-text;
     font-weight: 300;
-    text-align: left;
     font-size: 32px;
 
     margin-block-start: 0rem;
@@ -42,28 +35,30 @@
   p {
     font-family: $ff-headline;
     color: $alt-text;
-    font-size: 1.2rem;
-    font-style: italic;
-    margin-left: 24px;
-    text-align: left;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  span {
+    font-family: $ff-body;
+    margin: 0.5rem;
   }
 }
 
-.titlecard__image {
-
+.profilecard__image {
   img {
     height: 300px;
-    width: 400px;
+    width: 300px;
     object-fit: cover;
     object-position: 50% 50%;
+    clip-path: circle(150px at center);
+    margin: 1rem;
   }
-
 }
 
-.titlecard__image_placeholder {
+.profilecard__image_placeholder {
 
   height: 300px;
-  width: 600px;
+  width: 300px;
   background-color: $primary-grey;
-
+  clip-path: circle(300px at center);
 }
