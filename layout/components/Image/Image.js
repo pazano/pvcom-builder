@@ -32,9 +32,9 @@ const Image = ({ src, alt, aspectRatio, respectAspect, style = '' }) => {
     const viewBoxParams = splitParams[0] + " " + splitParams[1];
 
     return (
-      <div className={`${styles.image__respect_aspect} ${style}`}>
+      <div className={`${styles.image__respect_aspect}`}>
         <svg viewBox={`0 0 ${viewBoxParams}`}></svg>
-        <picture>
+        <picture className={style}>
           <img
             srcSet={srcSet}
             sizes={sizeList}

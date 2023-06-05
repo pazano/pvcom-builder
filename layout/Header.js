@@ -6,7 +6,7 @@ import styles from './Header.module.scss';
 const Logo = () => (
   <div className={styles.logo}>
     <Link href="/">
-      <h1>elle | rou <span>photography</span></h1>
+      <h1>Pa<span>ul Valen</span>zano</h1>
     </Link>
   </div>
 )
@@ -19,13 +19,21 @@ const Header = () => {
       key: 'menu-about'
     },
     {
-      label: '@ellerouphoto',
-      target: 'https://instagram.com/ellerouphoto',
-      key: 'menu-instagram'
+      label: 'Work',
+      target: '/work',
+      key: 'menu-work'
+    },
+    {
+      label: 'Contact',
+      target: '/contact',
+      key: 'menu-contact'
+    },
+    {
+      label: 'Blog',
+      target: '/blog',
+      key: 'menu-blog'
     },
   ];
-
-  const emptyMenu = [];
 
   return(
     <div className={styles.header}>

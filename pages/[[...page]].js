@@ -1,28 +1,27 @@
-import { useRouter } from 'next/router';
-import { builder, BuilderComponent, useIsPreviewing } from '@builder.io/react';
 
-import ErrorPage from '../layout/ErrorPage';
-import Page from '../layout/Page';
-import '../layout/components/BuilderComponents';
+import { builder, BuilderComponent, Builder } from '@builder.io/react';
+
+import Layout from '../layout/Layout';
+import '../layout/components/BuilderPageComponents';
 
 builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY);
 
 const BuilderPage = ({ content }) => {
-  const isPreviewing = useIsPreviewing();
+  const seo = {
+    title: content?.data.title || '',
+    description: content?.data.description || '',
+    keywords: content?.data.keywords || '',
+  }
   return(
-    <Page seo={{
-      title: content?.data.title || '',
-      description: content?.data.description || '',
-      keywords: content?.data.keywords || '',
-    }}>
-      {( content || isPreviewing ) ? (
+    <Layout seo={seo}>
+      {( content || Builder.isPreviewing ) ? (
         <BuilderComponent
           model="page"
           content={content}
           options={{ includeRefs: true }}
           />
-        ) : ( <h1>Nada</h1>)}
-    </Page>
+        ) : null }
+    </Layout>
   );
 }
 
@@ -42,8 +41,6 @@ export const getStaticProps = async ( { params }) => {
     includeRefs: true,
   }).toPromise()) || null ;
 
-  !content && console.log(`[Pages] Could not retrieve content for url: ${formattedPageUrl}`);
-
   return {
     props: { content },
     revalidate: true,
@@ -56,10 +53,13 @@ export const getStaticPaths = async () => {
     options: {
       noTargeting: true,
     },
+    omit: 'data.blocks',
   });
 
+  let paths = results.map((item) => ({ params: { page: [item.data?.url.substr(1)] } }));
+
   return {
-    paths: results.map((item) => ({ params: { page: [item.data?.url.substr(1)] }})),
+    paths,
     fallback: false,
   };
 };

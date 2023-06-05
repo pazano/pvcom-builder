@@ -2,7 +2,7 @@
 import Head from 'next/head';
 
 const Meta = ({seo}) => {
-  const siteName = 'Elle Rou Photography';
+  const siteName = 'Paul Valenzano';
   const verboseTitle = seo.title + ' | ' + siteName;
   return(
     <Head>
@@ -14,7 +14,7 @@ const Meta = ({seo}) => {
 
       <meta property="og:title" content={verboseTitle} />
       <meta property="og:description" content={seo.description} />
-      <meta property="og:url" content={seo.url || 'https://www.ellerou.com'} />
+      <meta property="og:url" content={seo.url || 'https://www.paulvalenzano.com'} />
       <meta property="og:site_name" content={siteName} />
     </Head>
   )

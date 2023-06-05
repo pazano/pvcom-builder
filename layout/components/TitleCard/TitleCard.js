@@ -1,29 +1,32 @@
+import React from 'react';
+import Image from '../Image/Image';
 import styles from './TitleCard.module.scss';
 
 const TitleCard = ({ title, image, lede }) => {
-  if (image) {
-    const imageStyle = {
-      backgroundImage: `url('${image}')`
-    }
-    return (
-      <div className={`${styles.content} ${styles.padding__low}`}>
-        <div className={styles.titlecard}>
-          <h1>{ title }</h1>
-          <div className={styles.titlecard__image} style={imageStyle}></div>
-          <p>{lede || ''}</p>
-        </div>
-      </div>
-    )
-  } else {
-    return (
-      <div className={`${styles.content} ${styles.padding__low}`}>
-        <div className={styles.titlecard}>
-          <h1>{title}</h1>
-          <p>{lede || ''}</p>
-        </div>
-      </div>
-    )
+  const imageStyle = {
+    backgroundImage: `url('${image || ''}')`
   }
+
+  return(
+    <React.Fragment>
+      <div className={styles.titlecard}>
+        { (image) ? (
+          <Image
+            src={image}
+            aspectRatio="4x3"
+            respectAspect={false}
+            style={styles.titlecard__image}
+          />
+        ): (
+          <div className={styles.titlecard__image_placeholder} />
+        )}
+        <div className={styles.titlecard__titleblock}>
+          <h1>{ title || ''}</h1>
+          { (lede) ? (<p>{lede || ''}</p>): null}
+        </div>
+      </div>
+    </React.Fragment>
+  )
 }
 
 export default TitleCard;
