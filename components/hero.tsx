@@ -1,8 +1,29 @@
 import Link from 'next/link'
 import VideoThumb from '@/public/images/hero-image-01.jpg'
 import ModalVideo01 from '@/components/modal-video-01'
+import { StaticImageData } from 'next/image'
 
-export default function HeroHome() {
+/* Attributes
+
+  Title
+  Description
+  Primary CTA (object)
+  Secondary CTA (object)
+  Image
+*/
+
+interface CTA  {
+  label: string,
+  url: URL, // Note - not sure if there will be a difficulty here coming out of Builder
+  style: string // button sub-types?
+}
+
+interface Image {
+  src: StaticImageData,
+  alt: string
+}
+
+export default function Hero({ title, description, primaryCta, secondaryCta, image}: { title: string, description: string, primaryCta: CTA, secondaryCta: CTA, image: Image}) {
   return (
     <section className="relative">
 
@@ -17,29 +38,29 @@ export default function HeroHome() {
 
             {/* Content */}
             <div className="text-center md:text-left md:min-w-[30rem]" data-aos="fade-right">
-              <h1 className="h1 font-playfair-display text-slate-100 mb-4">Create stunning web experiences</h1>
-              <p className="text-xl text-slate-400 mb-8">Our landing page template works on all devices, so you only have to set it up once, and get beautiful results forever.</p>
+              <h1 className="h1 font-playfair-display text-slate-100 mb-4">{title}</h1>
+              <p className="text-xl text-slate-400 mb-8">{description}</p>
               <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
                 <div>
-                  <Link className="btn text-white bg-blue-600 hover:bg-blue-700 w-full group" href="/request-demo">
-                    Request Demo <span className="tracking-normal text-blue-300 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
+                  <Link className="btn text-white bg-blue-600 hover:bg-blue-700 w-full group" href={primaryCta.url}>
+                    {primaryCta.label} <span className="tracking-normal text-blue-300 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
                   </Link>
                 </div>
                 <div>
-                  <Link className="btn text-white bg-slate-700 hover:bg-slate-800 w-full" href="#0">Explore Product</Link>
+                  <Link className="btn text-white bg-slate-700 hover:bg-slate-800 w-full" href={secondaryCta.url}>{secondaryCta.label}</Link>
                 </div>
               </div>
             </div>
 
             {/* Hero image */}
             <ModalVideo01
-              thumb={VideoThumb}
+              thumb={image.src}
               thumbWidth={540}
               thumbHeight={405}
-              thumbAlt="Modal video thumbnail"
+              thumbAlt={image.alt}
               video="/videos/video.mp4"
               videoWidth={1920}
-              videoHeight={1080} />            
+              videoHeight={1080} />
 
           </div>
 

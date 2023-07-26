@@ -1,12 +1,6 @@
 import { Builder } from '@builder.io/react';
 
-import './Hero/Hero.builder';
-import './TitleCard/TitleCard.builder';
-import './ProfileCard/ProfileCard.builder';
-import './Gallery/Gallery.builder';
-import './ImageContent/ImageContent.builder';
-import './VimeoPlayer/VimeoPlayer.builder';
-import './CTA/CTA.builder';
+import './components/hero';
 
 Builder.register('insertMenu', {
   name: 'Custom Components',

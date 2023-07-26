@@ -31,6 +31,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".contentlayer/generated"
-  ],
+, "builder.io/hero-blog.builder"  ],
   "exclude": ["node_modules"]
 }

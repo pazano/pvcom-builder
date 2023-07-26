@@ -60,3 +60,33 @@ export const backgroundImage = {
     }
   ]
 }
+
+export const ctaButton = {
+  name: 'CTA Button',
+  type: 'object',
+  subFields: [
+    {
+      name: 'label',
+      type: 'string',
+    },
+    {
+      name: 'url',
+      type: 'string',
+      helperText: 'target destination'
+    },
+    {
+      name: 'style',
+      type: 'string',
+      helperText: 'action styles for the button',
+      defaultValue: 'primary',
+      enum: ['primary', 'secondary']
+    }
+  ]
+}
+
+export const basicImage = {
+  name: 'image',
+  type: 'file',
+  helperText: 'File types: .jpeg .png',
+  allowedFileTypes: ['jpeg', 'png'],
+}
