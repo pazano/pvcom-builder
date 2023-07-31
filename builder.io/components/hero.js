@@ -1,6 +1,6 @@
 import { Builder } from '@builder.io/react';
 import { basicImage } from '../BuilderAdminParts';
-import HeroHome from '@/components/hero';
+import Hero from '@/components/hero';
 
 Builder.registerComponent(Hero,
   {

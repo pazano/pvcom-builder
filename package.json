@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.14",
-    "@builder.io/react": "^2.0.12",
-    "@builder.io/utils": "^1.0.4",
+    "@builder.io/react": "^3.0.8",
+    "@builder.io/utils": "^1.1.15",
     "aos": "^3.0.0-beta.6",
     "date-fns": "^2.30.0",
     "install-peers": "^1.0.3",
