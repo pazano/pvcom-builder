@@ -1,5 +1,6 @@
 {
-  "name": "development",
+  "name": "pazano.net",
+  "packageManager": "yarn@3.6.3",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -13,9 +14,9 @@
   "dependencies": {
     "@builder.io/react": "^2.0.12",
     "@builder.io/utils": "^1.0.4",
-    "@fortawesome/fontawesome-svg-core": "^6.2.1",
-    "@fortawesome/free-solid-svg-icons": "^5.13.0",
-    "@fortawesome/react-fontawesome": "^0.1.9",
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "eslint": "^8.32.0",
     "eslint-config-next": "^13.1.2",
     "install-peers": "^1.0.3",
