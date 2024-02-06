@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import Header from '@/components/ui/header'
-import Footer from '@/components/ui/footer'
+import Header from '@/app/ui/header'
+import Footer from '@/app/ui/footer'
 
 export default function NotFound() {
   return (
